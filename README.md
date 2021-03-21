@@ -3,7 +3,8 @@ This is a bot which can recognize your voice command and to task accordingly. Th
 
 # pip packages
 
-pip install -r requirements.txt
+pip install -r requirements.txt ([requirements.txt](https://github.com/rishitmavani/DreamnoidAIbot/files/6178644/requirements.txt)
+)
 
 # commands
 
