@@ -5,6 +5,8 @@ This is a bot which can recognize your voice command and to task accordingly. Th
 
 pip install -r requirements.txt
 
+# commands
+
 This is an official commands that can be used to operate the dreamnoid
 
 ---------------------------------Created by: Rishit Mavani----------------------------------------
