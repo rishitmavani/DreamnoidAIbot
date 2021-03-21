@@ -22,16 +22,16 @@ Keywords:
 9) 'on youtube' - to open any video in YouTube.
 10) 'wikipedia' - to search about anything in wikipedia.
 11) 'launch' + 'name of software' - to launch particular software or thing which is listed:
-					{ 1. chrome
-					   2. steam
-					   3. discord
-					   4. spotify
-					   5. pycharm
-					   6. csgo
-					   7. CMD
-					   8. youtube.com
-					   9. google.com
-					  10. stackoverflow.com
+					{ 1. chrome,
+					   2. steam,
+					   3. discord,
+					   4. spotify,
+					   5. pycharm,
+					   6. csgo,
+					   7. CMD,
+					   8. youtube.com,
+					   9. google.com,
+					  10. stackoverflow.com,
 						}
 12) 'shutdown' - to turnoff your pc.
 13) 'restart' - to restart your pc.
