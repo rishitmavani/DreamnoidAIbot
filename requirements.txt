@@ -1,0 +1,14 @@
+pyjokes
+pyttsx3
+datetime
+speech_recognition
+wikipedia
+webbrowser
+speedtest
+smtplib
+random
+tkinter
+BeautifulSoup
+TextBlob
+requests
+pywhatkit
