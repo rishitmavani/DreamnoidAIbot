@@ -48,3 +48,7 @@ Keywords:
 24) 'weather / temperature' + 'city name' - to get weather related news.
 26) 'have sleep' - to put AIbot in the sleep mode. (to wake up say wake up! or Hey Jignesh)
 27) 'quit' - to exit.
+
+You need to add some applications path to the code in order to open it.
+You even need to download some libraries which has been useed in the code.
+Also, download the .txt file to open when you need help by saying "open manual" to bot.
