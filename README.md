@@ -51,4 +51,5 @@ Keywords:
 
 You need to add some applications path to the code in order to open it.
 You even need to download some libraries which has been useed in the code.
-Also, download the .txt file to open when you need help by saying "open manual" to bot.
+Also, download the .txt file to open when you need help by saying "open manual" to bot. ([dreamnoidAIbot.txt](https://github.com/rishitmavani/DreamnoidAIbot/files/6178434/dreamnoidAIbot.txt)
+)
