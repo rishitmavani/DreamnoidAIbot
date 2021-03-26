@@ -11,10 +11,13 @@ import smtplib
 import random
 import tkinter as tk
 import re
+import wmi
+import cv2
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 import subprocess
 from textblob import TextBlob
+import psutil
 import geoip2.database
 import time
 import requests
@@ -37,6 +40,21 @@ def speak(audio):
     engine.runAndWait()
 
 
+def battery_Percentage():
+    battery = psutil.sensors_battery()
+    percent = battery.percent
+    speak("Currently we have " + str(percent) + "% battery to run system!")
+
+
+def system_Info():
+    c = wmi.WMI()
+    system = c.Win32_ComputerSystem()[0]
+    speak("This system's manufacturer is " + system.Manufacturer)
+    speak("Model number is " + system.Model)
+    speak("Name of the system is " + system.Name)
+    speak("There are " + str(system.NumberOfProcessors) + " processors available.")
+
+
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     tt = time.strftime("%I:%M %p")
@@ -50,6 +68,7 @@ def wishMe():
 
     start = random.choice(starting)
     speak(f"{start} sir, I am {name} your personal assistant! How may I help you?")
+    battery_Percentage()
 
 
 def takeCommand():
@@ -132,26 +151,45 @@ def Tasks():
                 Tasks()
 
         query = takeCommand().lower()
-        # query = "don't listen"
+        #query = "open steam"
 
         if 'morning already' in query:
             hour = int(datetime.datetime.now().hour)
             if 0 <= hour < 12:
                 speak("Yes, sir it is " + datetime.datetime.now().strftime("%H and %M") + "Good morning!")
-                wakeLoop()
 
             elif 12 <= hour < 18:
                 speak("Nein, sir it is " + datetime.datetime.now().strftime("%H and %M") + "Good Afternoon!")
-                wakeLoop()
             else:
                 speak("Negative, sir it is " + datetime.datetime.now().strftime("%H and %M") + "Good evening!")
                 wakeLoop()
             speak("what is my task for today master!?")
+            battery_Percentage()
+            wakeLoop()
+
+        elif 'battery' in query or 'system power' in query:
+            battery_Percentage()
+
+        elif 'system info' in query or 'system information' in query or 'this system' in query:
+            system_Info()
+
+        elif 'mobile camera' in query or 'camera in mobile' in query:
+            # yourip4 = IP Webcam app in your mobile's ip.
+            url = "http://yourip4/video"
+            cp = cv2.VideoCapture(url)
+            while True:
+                ret, frame = cp.read()
+                if frame is not None:
+                    cv2.imshow("frame", frame)
+                q = cv2.waitKey(1)
+                if q == ord("q"):
+                    break
+            cv2.destroyAllWindows()
 
         elif 'weather' in query or 'temperature' in query:
             def get_temperature(json_data):
-                temp_in_celcius = json_data['main']['temp']
-                return temp_in_celcius
+                temp_in_Celsius = json_data['main']['temp']
+                return temp_in_Celsius
 
             def get_weather_type(json_data):
                 weather_type = json_data['weather'][0]['description']
@@ -344,23 +382,6 @@ def Tasks():
 
             wakeLoop()
 
-        # elif 'jarvis' in query:
-        #   speak("I am dreamnoid sir, and who is jarvis firstly!")
-        #    query = takeCommand().lower()
-        #   if 'sorry dreamnoid' in query:
-        #       speak("who is jarvis not the sorry sir. you have sidebot")
-        #   elif 'my x' in query:
-        #       speak("you never had relationship sir, don't lie lol")
-        #   else:
-        #       "huh! whatever, tell me what to do."
-        #   query = takeCommand().lower()
-        #  if 'angry' in query:
-        #       speak("ohh, ofcourse i am not what you think so.")
-        #   else:
-        #      speak("Surely! you don't even need to remember my name.")
-        #       speak("please tell me again what to do?")
-        #       break
-
         elif 'long day' in query or 'without you' in query:
             speak("Aw! sir, i you missed me sir?")
             query = takeCommand()
@@ -484,7 +505,7 @@ def Tasks():
             speak(greeting + "")
             wakeLoop()
 
-        elif re.search('launch | open', query):
+        elif 'open' in query or 'launch' in query:
             dict_app = {
                 'chrome': "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
                 'steam': 'C:\\Program Files (x86)\\Steam\\Steam.exe',
@@ -497,28 +518,38 @@ def Tasks():
             keyword_list = ['youtube.com', 'google.com', 'stackoverflow.com', 'CMD']
 
             word = query.split()
+            # print(word)
             words = len(word)
             j = 0
             for _ in word:
-                if word[j] in keyword_list:
-                    prefixran = random.choice(prefix)
-                    chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
-                    webbrowser.get(chrome_path).open(str(word[j]))
-                    speak(prefixran + "Starting: " + word[j])
-                    pass
-                else:
-                    j += 1
-                if 'cmd' in query:
-                    os.system("start cmd")
-                    speak("Here it is.")
+                for i in range(words):
+                    if word[j] in keyword_list:
+                        prefixran = random.choice(prefix)
+                        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
+                        webbrowser.get(chrome_path).open(str(word[j]))
+                        speak(prefixran + "Starting: " + str(word[j]))
+                        break
+                    else:
+                        j += 1
                     break
-                else:
-                    for i in range(words):
-                        app = query.split(' ', i)[i]
+
+                if '.com' not in query:
+                    if 'cmd' in query:
+                        os.system("start cmd")
+                        speak("Here it is.")
+                        break
+                    else:
+                        for i in range(words):
+                            wordss = word[i]
+                            if re.search(wordss, str(dict_app.keys())):
+                                app = wordss
+                                # print(app)
+
+                        path = dict_app.get(app)
                     '''
                       upper "for" loop for finding the word in the string to open 
                     '''
-                    path = dict_app.get(app)
+
                     if path is None:
                         speak('Application path not found')
                         # print('Application path not found')
@@ -715,12 +746,11 @@ if __name__ == "__main__":
         background="black"  # Set the background color to black
     )
 
-
     def start():
         while True:
             # print("Say, hey dreamnoid or aaaiiii dreamnoid to power up...")
             permission = takeCommand().lower()
-            # permission = "wake up"
+            permission = "wake up"
             if 'wake up' in permission or 'hey dreamnoid' in permission or 'hello dreamnoid' in permission:
                 wishMe()
                 Tasks()
