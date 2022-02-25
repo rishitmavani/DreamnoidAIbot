@@ -13,7 +13,7 @@ This is an official commands that can be used to operate the dreamnoid
 ---------------------------------Created by: Rishit Mavani----------------------------------------
 
 
-*********keywords that should be in the sentence to use the operation*********** 
+*********keywords that should be in the sentence to use the operation*********
 
 *********Lot of added and still working on adding new commands*********
 
