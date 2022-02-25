@@ -15,7 +15,8 @@ This is an official commands that can be used to operate the dreamnoid
 
 *********keywords that should be in the sentence to use the operation*********** 
 
-*********Lot of added and still working on adding new commands**********
+*********Lot of added and still working on adding new commands*********
+
 Keywords:
 
 1) 'Wikipedia' - to get information of anyone online.
