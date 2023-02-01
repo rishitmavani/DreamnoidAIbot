@@ -4,8 +4,3 @@ datetime
 speechrecognition
 wikipedia
 speedtest
-tkinter
-BeautifulSoup
-TextBlob
-requests
-pywhatkit
