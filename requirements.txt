@@ -3,4 +3,12 @@ pyttsx3
 datetime
 speechrecognition
 wikipedia
+webbrowser
 speedtest
+smtplib
+random
+tkinter
+BeautifulSoup
+TextBlob
+requests
+pywhatkit
