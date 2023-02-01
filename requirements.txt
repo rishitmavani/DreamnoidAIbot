@@ -4,12 +4,12 @@ pyttsx3
 datetime
 speechrecognition
 wikipedia
-webbrowser -t "http://www.python.org"
+pycopy-webbrowser
 speedtest
-smtplib
-random
-tkinter
-BeautifulSoup
-TextBlob
+pycopy-smtplib
+random2
+every_tkinter
+beautifulsoup4
+textblob
 requests
 pywhatkit
