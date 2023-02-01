@@ -7,7 +7,7 @@ wikipedia
 speedtest
 smtp-server
 random2
-every_tkinter
+tk
 beautifulsoup4
 textblob
 requests
