@@ -35,9 +35,9 @@ jobs:
       uses: facebook/pyre-action@v0.0.1
       with:
         # Path to the python source code you want to type check. If you want to type check the root of your repo, use './'. A .pyre_configuration file should exist here, if not, a default configuration will be used.
-        repo-directory: './'
+        repo-directory: ./
         # Path to requirements file, relative to `repo-directory`, to look for dependencies.
-        requirements-path: './'
+        requirements-path: ./
         # Use nightly (unstable) version of Pyre
         use-nightly: Pyre
         # Version of pyre-check to be used. Default is latest.
