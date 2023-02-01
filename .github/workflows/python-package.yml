@@ -23,12 +23,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-   
     - name: Pyre Action
       # You may pin to the exact commit or the version.
       # uses: facebook/pyre-action@60697a7858f7cc8470d8cc494a3cf2ad6b06560d
