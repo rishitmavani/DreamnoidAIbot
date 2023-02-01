@@ -4,7 +4,6 @@ datetime
 speechrecognition
 wikipedia
 speedtest
-random
 tkinter
 BeautifulSoup
 TextBlob
