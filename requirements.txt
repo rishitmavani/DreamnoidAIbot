@@ -5,7 +5,7 @@ datetime
 speechrecognition
 wikipedia
 speedtest
-pycopy-smtplib
+smtp-server
 random2
 every_tkinter
 beautifulsoup4
