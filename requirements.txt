@@ -4,7 +4,6 @@ pyttsx3
 datetime
 speechrecognition
 wikipedia
-pycopy-webbrowser
 speedtest
 pycopy-smtplib
 random2
